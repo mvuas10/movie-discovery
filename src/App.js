@@ -1,23 +1,51 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
+} from "react-router-dom";
+import MovieList from "./components/MovieList";
+import MovieDetails from "./components/MovieDetails";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <nav>
+        <NavLink
+          activeStyle={{
+            fontWeight: "bold",
+            color: "red",
+          }}
+          to="/"
+          exact
         >
-          Hello!!!!!
-        </a>
+          Home
+        </NavLink>
+        <NavLink
+          activeStyle={{
+            fontWeight: "bold",
+            color: "green",
+          }}
+          to="/movies"
+        >
+          Movies
+        </NavLink>
+      </nav>
+      <header className="App-header">
+        <Switch>
+          <Route path="/movies/:imdbID">
+            <MovieDetails />
+          </Route>
+          <Route exact path="/movies">
+            <MovieList />
+          </Route>
+          <Route path="/">
+            <h1>Welcome to my app, stay!</h1>
+          </Route>
+        </Switch>
       </header>
     </div>
   );
