@@ -23,7 +23,7 @@ export default function MovieList() {
 
   console.log("movies test: ", movies);
   if (appState === "searching...") {
-    return <h1>Searching movies</h1>;
+    return <h1>Searching movies. Please wait...</h1>;
   }
   return (
     <div>
